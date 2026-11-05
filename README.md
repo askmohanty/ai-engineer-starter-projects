@@ -26,12 +26,22 @@ See **[LEARNING-PATH.md](LEARNING-PATH.md)** for the full study plan these proje
 
 Do them in order: each builds on ideas from the ones before. Projects 02 onwards use a small helper, [`src/agentkit`](src/agentkit/agent.py), which is the same loop you write by hand in project 01.
 
+## Fork it and make it yours
+
+These projects are meant to be changed, not just read. **[Fork this repository](https://github.com/askmohanty/ai-engineer-starter-projects/fork)** to your own GitHub account and work in your fork:
+
+1. Do the **Try this** experiments in each project's README, and commit your changes as you go.
+2. Write down what you tried and what happened in the project's README. That record is what makes a portfolio, not just the code.
+3. Make it your own: point the agents at your own logs, runbooks, cluster or cloud bill (with secrets removed).
+4. Found a bug or built a better version? Open an issue or a pull request here.
+
 ## Setup
 
 Requires Python 3.11 or newer.
 
 ```bash
-git clone https://github.com/askmohanty/ai-engineer-starter-projects.git
+# after forking: replace <your-username> with your GitHub username
+git clone https://github.com/<your-username>/ai-engineer-starter-projects.git
 cd ai-engineer-starter-projects
 
 python -m venv .venv
