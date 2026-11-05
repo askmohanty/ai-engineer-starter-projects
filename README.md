@@ -4,7 +4,7 @@ Thirteen small, hands-on Python projects for learning to build AI agents, from a
 
 Each project is a single short file you can read in ten minutes, plus a README with **experiments to try**. The experiments are where the learning happens.
 
-See **[LEARNING-PATH.md](LEARNING-PATH.md)** for the full study plan these projects go with, and **[snippets/](snippets/)** for short, standalone copy-paste versions of the key patterns: agent loop, structured output, safe tools, RAG, MCP server, LangGraph, Google ADK and LLM-as-judge.
+See **[LEARNING-PATH.md](LEARNING-PATH.md)** for the full study plan these projects go with, and **[snippets/](snippets/)** (also as a [Gist](https://gist.github.com/askmohanty/d1bda98dfc1e3246d8eb3361ef67657e)) for short, standalone copy-paste versions of the key patterns: agent loop, structured output, safe tools, RAG, MCP server, LangGraph, Google ADK and LLM-as-judge.
 
 ## Projects
 
