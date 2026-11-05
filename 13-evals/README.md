@@ -17,6 +17,21 @@ python 13-evals/run_evals.py
 
 Results print as a table and are saved to `13-evals/results/` as JSON, so you can compare runs.
 
+## How it works (theory)
+
+**Why AI needs evals.** A unit test passes or fails the same way every time. A model's output varies between runs, and a prompt change that fixes one question can quietly break three others. So instead of a single assertion, you measure *rates* over a dataset: "9 of 10 correct, 10 of 10 grounded".
+
+**Three graders, three questions.**
+- **Retrieval check:** was the source runbook among the retrieved chunks? It isolates the search half of RAG.
+- **Facts check:** does the answer contain the must-have facts? Cheap and deterministic, but brittle: "ninety-two percent" fails a check for "92".
+- **LLM-as-judge:** a second model call with a rubric, the question, the sources and the answer returns structured grades. *Correct* means it answers the question; *grounded* means every claim is supported by the sources. Judges are flexible but can be wrong, so spot-check them yourself.
+
+**The unanswerable question** (resetting an Active Directory password) checks that the system says "I don't know" instead of inventing an answer. Refusal behaviour is part of quality.
+
+**Comparing runs.** Results are saved with a timestamp so you can compare a baseline with a change. That's the discipline: change one variable, re-run, keep the change only if the numbers improve.
+
+Read more: [Evals](../concepts/07-evals.md)
+
 ## The workflow to practise
 
 1. Run the evals and note the scores. This is your **baseline**.

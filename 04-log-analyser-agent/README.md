@@ -13,6 +13,18 @@ python 04-log-analyser-agent/agent.py                       # the sample log
 python 04-log-analyser-agent/agent.py /path/to/your/app.log
 ```
 
+## How it works (theory)
+
+**The context window problem.** A model can only consider a limited number of tokens per request, and every token costs money and time. Real logs are gigabytes. So instead of sending the file, the agent gets tools that return small, relevant slices: `log_summary` (counts), `search_log` (matching lines), `read_lines` (context around a hit, capped at 100 lines). The model explores the file like an engineer with `grep` and `less`, and only what it asks for enters the context.
+
+**Prompting for method, not just goal.** The system prompt says to look at what happened *before* the first error. Without that, models tend to report the symptom (database timeouts) instead of the cause.
+
+**Prompt chaining.** The work is two steps: first a free-form investigation (`run_agent`), then a separate call that turns the findings into JSON (`extract`). Splitting reasoning from formatting gives better results than asking for both at once.
+
+**Structured output.** `extract` defines a tool whose input schema *is* the report format and forces the model to call it (`tool_choice`). The model's answer must match the schema, including `enum` values for severity, so code can consume it safely.
+
+Read more: [How LLMs work: the context window](../concepts/01-how-llms-work.md#the-context-window) · [Prompting and structured output](../concepts/02-prompting-and-structured-output.md)
+
 ## Try this
 
 1. Did it find the root cause, or stop at "database timeouts"? If it stopped, improve the system prompt.

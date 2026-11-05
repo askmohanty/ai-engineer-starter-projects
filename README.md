@@ -2,7 +2,23 @@
 
 Thirteen small, hands-on Python projects for learning to build AI agents, from a first tool-calling loop to RAG, MCP, LangGraph, Google ADK and evals. Most use realistic DevOps problems (logs, Kubernetes, cloud bills, on-call runbooks), so they suit engineers coming from backend, DevOps or cloud work.
 
-Each project is a single short file you can read in ten minutes, plus a README with **experiments to try**. The experiments are where the learning happens.
+Each project is a single short file you can read in ten minutes, plus a README that explains **how it works** (the theory) and lists **experiments to try**. The experiments are where the learning happens.
+
+## Start with the theory
+
+New to AI? Read **[concepts/](concepts/)** first: nine short, plain-English pages, with diagrams, covering the ideas the projects use.
+
+1. [How LLMs work](concepts/01-how-llms-work.md): tokens, context windows, temperature, hallucination
+2. [Prompting and structured output](concepts/02-prompting-and-structured-output.md)
+3. [Tool calling and agents](concepts/03-tool-calling-and-agents.md): the agent loop, workflows versus agents, memory
+4. [Embeddings and RAG](concepts/04-embeddings-and-rag.md)
+5. [MCP, the Model Context Protocol](concepts/05-mcp.md)
+6. [Agent frameworks: LangGraph and Google ADK](concepts/06-agent-frameworks.md)
+7. [Evals](concepts/07-evals.md)
+8. [Agent safety and security](concepts/08-agent-safety.md)
+9. [LLMOps: running AI in production](concepts/09-llmops.md)
+
+There's also a [glossary](concepts/README.md#glossary).
 
 See **[LEARNING-PATH.md](LEARNING-PATH.md)** for the full study plan these projects go with, and **[snippets/](snippets/)** (also as a [Gist](https://gist.github.com/askmohanty/d1bda98dfc1e3246d8eb3361ef67657e)) for short, standalone copy-paste versions of the key patterns: agent loop, structured output, safe tools, RAG, MCP server, LangGraph, Google ADK and LLM-as-judge.
 

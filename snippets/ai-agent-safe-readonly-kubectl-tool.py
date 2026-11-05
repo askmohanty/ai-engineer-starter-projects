@@ -1,5 +1,5 @@
 # A tool an agent can't misuse: the safety lives in the tool, not the prompt.
-# Register kubectl() as a tool in 01-agent-loop.py with an "args" array parameter.
+# Register kubectl() as a tool in claude-tool-calling-agent-loop.py with an "args" array parameter.
 # More: https://github.com/askmohanty/ai-engineer-starter-projects
 import shutil
 import subprocess

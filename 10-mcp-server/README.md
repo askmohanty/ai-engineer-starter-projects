@@ -35,6 +35,23 @@ Add this to Claude Desktop's config (Settings → Developer → Edit Config), wi
 
 Restart Claude Desktop and ask: *"Use devops-tools to find out why payments failed in app.log."*
 
+## How it works (theory)
+
+**The problem MCP solves.** Every AI app used to define tools its own way, so the log tools in project 04 would need rewriting for Claude Desktop, then for VS Code, then for ADK. MCP standardises the interface: an AI app (the **host**) contains an MCP **client**, which connects to MCP **servers** like this one. Any host can then use any server.
+
+**What a server exposes.**
+- **Tools** are functions *the model* decides to call (`log_summary`, `search_log`).
+- **Resources** are data *the application or user* chooses to load into context (`runbook://disk-full`).
+- **Prompts** are reusable templates a user can pick.
+
+**How the decorators work.** `@mcp.tool()` reads the function's name, type hints and docstring and publishes them as a tool definition with a JSON schema. That's why good docstrings matter: they become the description the model sees.
+
+**Transports.** With **stdio** (the default here) the client starts the server as a child process and they exchange JSON-RPC messages over stdin and stdout. Local only, no network, no auth needed. With **streamable HTTP**, the server is a network service that many clients share, so it needs everything an API needs: authentication (OAuth), TLS and rate limits.
+
+**The server is the security boundary.** Whatever the model is told, it can only do what the server implements. Here, reading files inside `samples/`.
+
+Read more: [MCP](../concepts/05-mcp.md)
+
 ## Try this
 
 1. Add the read-only `kubectl` tool from project 05 as an MCP tool.

@@ -30,6 +30,20 @@ adk run devops_assistant
 
 Ask: *"Why did orders fail this morning?"*, then *"Which service's cost grew the most?"* In `adk web`, open the **Events** tab to see the root agent transfer to each specialist.
 
+## How it works (theory)
+
+**Multi-agent by delegation.** The root agent has no tools of its own. It has `sub_agents`, and the model reads each sub-agent's `description` to decide who should handle a request, then **transfers** control to it. Descriptions are the routing table, so make them specific. Each specialist has its own focused `instruction` and only the tools it needs, which keeps prompts short and reduces wrong tool choices.
+
+**Function tools.** ADK inspects each Python function (name, type hints, docstring with an `Args:` section) to build the tool schema the model sees. Returning a dict with a `status` field (`"success"` or `"error"` plus `error_message`) is the ADK convention for telling the model whether a call worked.
+
+**Sessions and events.** ADK runs each conversation in a **session** and records every step (model response, tool call, tool result, agent transfer) as an **event**. `adk web` shows these events, which is how you debug which agent did what and why.
+
+**LLM agents versus workflow agents.** `Agent` (an LLM agent) lets the model decide. `SequentialAgent`, `ParallelAgent` and `LoopAgent` run sub-agents in a fixed pattern without model decisions, the same workflow-versus-agent choice as LangGraph in project 11.
+
+**When multi-agent is worth it:** when sub-tasks need different tools or instructions, or would overflow one context window. Every hand-off adds latency and cost, so start with one agent and split only when it struggles.
+
+Read more: [Agent frameworks: Google ADK](../concepts/06-agent-frameworks.md#google-adk-agents-and-sub-agents)
+
 ## Try this
 
 1. Remove the docstring from `search_log`. Does the agent still use it correctly?

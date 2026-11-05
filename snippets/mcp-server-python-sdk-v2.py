@@ -1,7 +1,7 @@
 # An MCP server: write tools once, use them from Claude Desktop, Claude Code, VS Code, ADK, LangGraph...
 # pip install "mcp[cli]>=2"
-# Try it:   mcp dev 05-mcp-server.py      (opens the MCP Inspector)
-# Claude Desktop config: {"mcpServers": {"ops": {"command": "python", "args": ["/full/path/05-mcp-server.py"]}}}
+# Try it:   mcp dev mcp-server-python-sdk-v2.py      (opens the MCP Inspector)
+# Claude Desktop config: {"mcpServers": {"ops": {"command": "python", "args": ["/full/path/mcp-server-python-sdk-v2.py"]}}}
 # More: https://github.com/askmohanty/ai-engineer-starter-projects
 import shutil
 import socket
