@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api
+  template:
+    metadata:
+      labels:
+        app: payments-api
+    spec:
+      hostNetwork: true
+      containers:
+        - name: api
+          image: example/payments-api:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: STRIPE_API_KEY
+              value: "example-not-a-real-key"
+          securityContext:
+            privileged: true

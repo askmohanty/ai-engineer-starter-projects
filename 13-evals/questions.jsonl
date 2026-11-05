@@ -1,0 +1,10 @@
+{"question": "At what disk usage does NodeDiskUsageHigh page on-call?", "must_mention": ["92"], "source": "disk-full.md"}
+{"question": "How many days of application logs does logrotate keep?", "must_mention": ["7"], "source": "disk-full.md"}
+{"question": "Payments are timing out waiting for a database connection. What is the most common cause?", "must_mention": ["reporting"], "source": "database-connection-errors.md"}
+{"question": "How do I stop a long-running Postgres query that is holding connections?", "must_mention": ["pg_cancel_backend"], "source": "database-connection-errors.md"}
+{"question": "What is the maximum pool size for payment-service without asking the database team?", "must_mention": ["20"], "source": "database-connection-errors.md"}
+{"question": "A container exits with code 137. What does that usually mean?", "must_mention": ["oom"], "source": "pod-crashloopbackoff.md"}
+{"question": "How do I see the logs of the container that crashed, not the current one?", "must_mention": ["--previous"], "source": "pod-crashloopbackoff.md"}
+{"question": "Who rotates the auth-service JWT signing certificate?", "must_mention": ["security"], "source": "certificate-expiry.md"}
+{"question": "Between how many replicas does the HPA scale a service?", "must_mention": ["2", "10"], "source": "high-cpu.md"}
+{"question": "How do I reset a user's password in Active Directory?", "must_mention": ["don't know"], "source": null}

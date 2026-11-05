@@ -1,0 +1,18 @@
+{
+  "Dockerfile": [
+    {"name": "unpinned :latest base image", "any_of": ["latest", "pin"]},
+    {"name": "secret baked into the image", "any_of": ["password", "secret"]},
+    {"name": "runs as root", "any_of": ["root", "non-root", "useradd"]},
+    {"name": "apt cache / layers not cleaned", "any_of": ["apt-get clean", "rm -rf /var/lib/apt", "--no-install-recommends", "combine"]},
+    {"name": "no health check", "any_of": ["healthcheck", "health check"]}
+  ],
+  "deployment.yaml": [
+    {"name": ":latest image tag", "any_of": ["latest"]},
+    {"name": "secret in plain env value", "any_of": ["secretkeyref", "kubernetes secret", "stripe_api_key"]},
+    {"name": "privileged container", "any_of": ["privileged"]},
+    {"name": "hostNetwork", "any_of": ["hostnetwork", "host network"]},
+    {"name": "no resource requests/limits", "any_of": ["resources", "limits", "requests"]},
+    {"name": "no liveness/readiness probes", "any_of": ["probe"]},
+    {"name": "single replica", "any_of": ["replica"]}
+  ]
+}

@@ -1,0 +1,27 @@
+# A pod that fails on purpose, for the agent to diagnose.
+#   kubectl apply -f 05-kubernetes-helper-agent/broken-pod.yaml
+#   kubectl delete -f 05-kubernetes-helper-agent/broken-pod.yaml   (when done)
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payments-api
+  labels:
+    app: payments-api
+spec:
+  containers:
+    - name: api
+      image: busybox:1.36
+      command: ["sh", "-c", "echo 'Starting payments-api'; echo 'FATAL: environment variable DATABASE_URL is not set' >&2; exit 1"]
+      resources:
+        requests: { cpu: 10m, memory: 16Mi }
+        limits: { cpu: 50m, memory: 32Mi }
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: reports-worker
+spec:
+  containers:
+    - name: worker
+      image: busybox:1.36-does-not-exist
+      command: ["sleep", "3600"]

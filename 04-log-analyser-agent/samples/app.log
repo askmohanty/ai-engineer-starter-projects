@@ -1,0 +1,37 @@
+2026-11-05 09:58:02 INFO [api-gateway] Started on port 8080
+2026-11-05 09:58:03 INFO [payment-service] Connected to postgres at db:5432 (pool size 10)
+2026-11-05 09:58:03 INFO [order-service] Consumer subscribed to topic orders.created
+2026-11-05 10:00:11 INFO [api-gateway] GET /health 200 3ms
+2026-11-05 10:01:45 INFO [order-service] Order 88121 created for customer 4411
+2026-11-05 10:01:46 INFO [payment-service] Charging order 88121 amount=1499.00 INR
+2026-11-05 10:01:47 INFO [payment-service] Payment 88121 succeeded in 412ms
+2026-11-05 10:03:10 WARN [payment-service] Connection pool usage 8/10
+2026-11-05 10:03:52 INFO [order-service] Order 88122 created for customer 1907
+2026-11-05 10:03:53 WARN [payment-service] Connection pool usage 10/10, waiting for a free connection
+2026-11-05 10:04:23 ERROR [payment-service] Timed out after 30000ms waiting for a database connection (order 88122)
+2026-11-05 10:04:23 ERROR [order-service] Payment failed for order 88122: upstream timeout
+2026-11-05 10:04:30 WARN [api-gateway] POST /orders 504 30112ms
+2026-11-05 10:05:02 INFO [reporting-job] Nightly export started: SELECT * FROM payments (no LIMIT)
+2026-11-05 10:05:40 WARN [payment-service] Connection pool usage 10/10, waiting for a free connection
+2026-11-05 10:06:10 ERROR [payment-service] Timed out after 30000ms waiting for a database connection (order 88123)
+2026-11-05 10:06:10 ERROR [order-service] Payment failed for order 88123: upstream timeout
+2026-11-05 10:06:11 WARN [api-gateway] POST /orders 504 30087ms
+2026-11-05 10:06:45 ERROR [payment-service] Timed out after 30000ms waiting for a database connection (order 88124)
+2026-11-05 10:06:45 ERROR [order-service] Payment failed for order 88124: upstream timeout
+2026-11-05 10:07:00 INFO [api-gateway] GET /health 200 2ms
+2026-11-05 10:07:30 ERROR [payment-service] Timed out after 30000ms waiting for a database connection (order 88125)
+2026-11-05 10:07:31 WARN [order-service] Retry 1/3 for order 88125
+2026-11-05 10:08:01 ERROR [payment-service] Timed out after 30000ms waiting for a database connection (order 88125)
+2026-11-05 10:08:01 WARN [order-service] Retry 2/3 for order 88125
+2026-11-05 10:08:15 WARN [reporting-job] Export still running after 3m13s, 2.1M rows read
+2026-11-05 10:08:31 ERROR [payment-service] Timed out after 30000ms waiting for a database connection (order 88125)
+2026-11-05 10:08:31 ERROR [order-service] Giving up on order 88125 after 3 retries
+2026-11-05 10:09:02 WARN [api-gateway] Error rate 18% over the last 5 minutes on POST /orders
+2026-11-05 10:10:44 INFO [reporting-job] Nightly export finished in 5m42s, 4.8M rows
+2026-11-05 10:10:45 INFO [payment-service] Connection pool usage 3/10
+2026-11-05 10:11:20 INFO [order-service] Order 88126 created for customer 3020
+2026-11-05 10:11:21 INFO [payment-service] Payment 88126 succeeded in 388ms
+2026-11-05 10:12:00 INFO [api-gateway] GET /health 200 2ms
+2026-11-05 10:13:37 WARN [auth-service] JWT signing certificate expires in 6 days
+2026-11-05 10:14:05 INFO [order-service] Order 88127 created for customer 5512
+2026-11-05 10:14:06 INFO [payment-service] Payment 88127 succeeded in 401ms

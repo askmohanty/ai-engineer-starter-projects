@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-engineer-starter"
+version = "0.1.0"
+description = "Small, hands-on agent projects for learning AI engineering"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40",
+    "python-dotenv>=1.0",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+data = ["pandas>=2.0"]
+rag = ["chromadb>=0.5", "pypdf>=4.0"]
+mcp = ["mcp[cli]>=2.0"]
+langgraph = ["langgraph>=0.2", "langchain-anthropic>=0.3"]
+adk = ["google-adk>=1.0"]
+all = ["ai-engineer-starter[data,rag,mcp,langgraph,adk]"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
